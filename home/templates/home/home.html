@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta />
+  </head>
+  <body>
+    <h1>{% now "H" as current_time%}
+      
+      {% if current_time|add:"0" > 12 and current_time|add:"0" < 17 %}
+      Good afternoon
+      {% elif current_time|add:"0" > 17 %}
+      Good evening
+      {% else %}
+      Good Morning
+      {% endif %} Patrick, welcome to your organiser's home page</h1>
+    
+
+      <a href="{% url 'todolist' %}"><h1>Your To Do List</h1></a>
+
+
+
+  </body>
+</html>

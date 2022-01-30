@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta />
+  </head>
+  <body>
+    <h1>{% now "H" as current_time%}
+        {% if current_time|add:"0" > 17 %}
+        Good evening
+        {% elif current_time|add:"0" > 12 %}
+        Good afternoon
+        {% elif current_time|add:"0" > 0 %}
+        Good morning
+        {% endif %} Patrick, welcome to your to do list
+      </h1>
+        <form method="get">
+          {{myFilter.form}}
+        <button class="btn btn-primary" type="submit">Filter Category</button>
+        </form>
+    {% for category in categories %}
+      <p>{{ category.category }} <a href="{% url 'delete_category' category.id %}">Delete category</a></p>
+      
+        {% for item in category.items.all %}
+          <ul>{{item.item}} <a href = "{% url 'delete_item' item.id %}">Delete item</a></ul>
+          
+        {% endfor %}
+    {% endfor %}
+    <div>
+      <a href="{% url 'add_item' %}">add item</a>
+    </div>
+    <div>
+      <a href="{% url 'add_category' %}">add category</a>
+    </div>
+  </body>
+</html>
