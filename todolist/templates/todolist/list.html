@@ -13,15 +13,23 @@
         Good morning
         {% endif %} Patrick, welcome to your to do list
       </h1>
+     
+  
+
+
         <form method="get">
-          {{myFilter.form}}
-        <button class="btn btn-primary" type="submit">Filter Category</button>
+          
+        {{myFilter.form}}  
+        
+          <button class="btn btn-primary" type="submit">Filter Category</button>
+       
+        
         </form>
     {% for category in categories %}
-      <p>{{ category.category }} <a href="{% url 'delete_category' category.id %}">Delete category</a></p>
+      <p>{{ category.category_name }} <a href="{% url 'delete_category' category.id %}">Delete category</a></p>
       
         {% for item in category.items.all %}
-          <ul>{{item.item}} <a href = "{% url 'delete_item' item.id %}">Delete item</a></ul>
+          <ul>{{item.item_name}} <a href = "{% url 'delete_item' item.id %}">Delete item</a></ul>
           
         {% endfor %}
     {% endfor %}
